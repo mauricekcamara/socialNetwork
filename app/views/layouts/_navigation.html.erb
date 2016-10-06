@@ -17,7 +17,7 @@
       <ul class="nav navbar-right col-md-4">
         <li class="col-md-8 user-name text-right">
           <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-          
+          <%= current_user.full_name.present? ? current_user.full_name : current_user.email %>     
         </li>
         <li class="col-md-4 logout"><%= link_to("Logout", destroy_user_session_path,
   class: "btn btn-danger", method: :delete) %></li>
