@@ -24,7 +24,7 @@ class UsersController < ApplicationController
       redirect_to my_friends_path, flash[:error] = "There was an error with adding user as connection."
     end
   end
-  
+
   def show
     @user = User.find(params[:id])
   end
