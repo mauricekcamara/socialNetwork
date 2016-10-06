@@ -12,12 +12,13 @@
       <ul class="nav navbar-nav">
         <li><%= link_to "My Profile", edit_user_registration_path(current_user)  %></li>
         <li><%= link_to "My Friends", my_friends_path %></li>
-        <li><%#= link_to "Link3", "/path3"  %></li>
+        <li><%= link_to "About", welcome_about_path %></li>
+        <li><%= link_to "Contact", welcome_contact_path %></li>
       </ul>
       <ul class="nav navbar-right col-md-4">
         <li class="col-md-8 user-name text-right">
           <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-          <%= current_user.full_name.present? ? current_user.full_name : current_user.email %>     
+          <%= current_user.full_name.present? ? current_user.full_name : current_user.email %>
         </li>
         <li class="col-md-4 logout"><%= link_to("Logout", destroy_user_session_path,
   class: "btn btn-danger", method: :delete) %></li>
