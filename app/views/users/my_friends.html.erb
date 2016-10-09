@@ -9,6 +9,7 @@
         </th>
       </tr>
       <tr>
+        <th>Avatar</th>
         <th>Name</th>
         <th>Email</th>
         <th>Actions</th>
@@ -17,6 +18,7 @@
     <tbody>
       <% @friendships.each do |friend| %>
       <tr>
+        <td><%= image_tag friend.avatar.url, size: "50x50" %></td>
         <td><%= friend.full_name %></td>
         <td><%= friend.email %></td>
         <td>

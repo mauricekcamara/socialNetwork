@@ -22,6 +22,7 @@
           <tbody>
             <% @users.each do |user| %>
             <tr>
+              <td><%= image_tag user.avatar.url, size: "100x100" %></td>
               <td><strong>Name:</strong> <%= user.full_name %></td>
               <td><strong>Email:</strong> <%= user.email %></td>
               <td><strong>Profile:</strong> <%= link_to "View Profile", user_path(user),
