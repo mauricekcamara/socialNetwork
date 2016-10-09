@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :friendships
   has_many :friends, through: :friendships
+  mount_uploader :avatar, AvatarUploader
   
   def full_name
     return "#{first_name} #{last_name}".strip if (first_name || last_name)
