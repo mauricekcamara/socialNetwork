@@ -6,12 +6,13 @@ class User < ActiveRecord::Base
   has_many :friendships
   has_many :friends, through: :friendships
   mount_uploader :avatar, AvatarUploader
-  
+  validate :avatar_size
+
   def full_name
     return "#{first_name} #{last_name}".strip if (first_name || last_name)
     "Anonymous"
   end
-  
+
   def not_friends_with?(friend_id)
     friendships.where(friend_id: friend_id).count < 1
   end
@@ -42,6 +43,14 @@ class User < ActiveRecord::Base
 
   def self.matches(field_name, param)
     where("lower(#{field_name}) like ?", "%#{param}%")
+  end
+
+  private
+
+  def avatar_size
+    if avatar.size > 5.megabytes
+      errors.add(:avatar, "Should be less than 5MB.")
+    end
   end
 
 
