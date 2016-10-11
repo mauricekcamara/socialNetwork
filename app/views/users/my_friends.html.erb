@@ -16,11 +16,11 @@
       </tr>
     </thead>
     <tbody>
-      <% @friendships.each do |friend| %>
+      <% current_user.active_friends.each do |active_friend| %>
       <tr>
-        <td><%= image_tag friend.avatar.url, size: "50x50" %></td>
-        <td><%= friend.full_name %></td>
-        <td><%= friend.email %></td>
+        <td><%= image_tag active_friend.avatar.url, size: "50x50" %></td>
+        <td><%= active_friend.full_name %></td>
+        <td><%= active_friend.email %></td>
         <td>
           <%= link_to "View Profile", user_path(friend), class:"btn btn-primary btn-xs" %>
           <%= link_to 'Remove Friend', friendship_path(friend),
@@ -60,9 +60,9 @@
         <td><%= request.full_name %></td>
         <td><%= request.email %></td>
         <td>
-          <%= link_to "View Profile", user_path(friend), class:"btn btn-primary btn-xs" %>
-          <%= link_to "Accept Friend Request", accept_friend_path(request.id), class:"btn btn-primary btn-xs" %>
-          <%= link_to 'Deny Friend Request', friendship_path(request.id),
+          <%#= link_to "View Profile", user_path(user), class:"btn btn-primary btn-xs" %>
+          <%= link_to "Accept Friend Request", accept_friend_path(id: request.id), class:"btn btn-primary btn-xs" %>
+          <%= link_to 'Deny Friend Request', friendship_path(id: request.id),
                                             :method => :delete,
                                             :data => { :confirm => "Are you sure?" },
                                             :class => "btn btn-xs btn-danger" %>

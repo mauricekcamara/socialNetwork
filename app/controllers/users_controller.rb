@@ -22,15 +22,15 @@ class UsersController < ApplicationController
       redirect_to my_friends_path, flash[:error] = "There was an error sending the friend request.."
     end
   end
-  
+
   def accept_friend
     @friendship = Friendship.find_by(id: params[:id])
-    @friendship.update(status: "accepted")
+    @friendship.update(accepted: true)
     if @friendship.save
       redirect_to my_friends_path, notice: "Friendship successfully confirmed."
     else
       redirect_to my_friends_path, flash[:error] = "There was an error confirming the friendship"
-    end  
+    end
   end
 
   def show
