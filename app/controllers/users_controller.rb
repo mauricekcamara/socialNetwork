@@ -15,14 +15,22 @@ class UsersController < ApplicationController
   end
 
   def add_friend
-    @friend = User.find(params[:friend])
-    current_user.friendships.build(friend_id: @friend.id)
-
-    if current_user.save
-      redirect_to my_friends_path, notice: "User was successfully added"
+    @friendship = current_user.friendships.build(friend_id: params[:friend_id])
+    if @friendship.save
+      redirect_to my_friends_path, notice: "Friend request sent."
     else
-      redirect_to my_friends_path, flash[:error] = "There was an error with adding user as connection."
+      redirect_to my_friends_path, flash[:error] = "There was an error sending the friend request.."
     end
+  end
+  
+  def accept_friend
+    @friendship = Friendship.find_by(id: params[:id])
+    @friendship.update(status: "accepted")
+    if @friendship.save
+      redirect_to my_friends_path, notice: "Friendship successfully confirmed."
+    else
+      redirect_to my_friends_path, flash[:error] = "There was an error confirming the friendship"
+    end  
   end
 
   def show
