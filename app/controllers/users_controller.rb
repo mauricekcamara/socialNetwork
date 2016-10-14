@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def my_friends
     @friendships = current_user.friends
+    @pending_friends = current_user.pending
   end
 
   def search
@@ -11,17 +12,6 @@ class UsersController < ApplicationController
       render "users/search_friends"
     else
       render status: :not_found, nothing: true
-    end
-  end
-
-  def add_friend
-    @friend = User.find(params[:friend])
-    current_user.friendships.build(friend_id: @friend.id)
-
-    if current_user.save
-      redirect_to my_friends_path, notice: "User was successfully added"
-    else
-      redirect_to my_friends_path, flash[:error] = "There was an error with adding user as connection."
     end
   end
 
