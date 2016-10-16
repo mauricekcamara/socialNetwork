@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
   validate :avatar_size
 
+  has_friendship
+
   def full_name
     return "#{first_name} #{last_name}".strip if (first_name || last_name)
     "Anonymous"
