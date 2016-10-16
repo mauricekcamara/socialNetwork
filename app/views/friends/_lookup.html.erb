@@ -27,13 +27,18 @@
               <td><strong>Email:</strong> <%= user.email %></td>
               <td><strong>Profile:</strong> <%= link_to "View Profile", user_path(user),
                                                         class: "btn btn-xs btn-success" %>
-                <% if current_user.not_friends_with?(user.id) %>
+                <% if current_user.friends_with?(user) %>
+                  <span class="label label-primary">
+                    You are friends.
+                  </span>
+                <% elsif current_user.pending_friends.include?(user) %>
+                  <span class="label label-primary">
+                    Awaiting friendship confirmation.
+                  </span>
+                <% else %>
                   <%= link_to "Add as a Friend", add_friend_path(user: current_user, friend: user),
                                                     class: "btn btn-xs btn-success" %>
-                <% else %>
-                  <span class="label label-primary">
-                    You are connected
-                  </span>
+
                 <% end %>
               </td>
             </tr>

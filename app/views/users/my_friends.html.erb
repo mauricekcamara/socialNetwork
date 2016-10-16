@@ -23,10 +23,8 @@
         <td><%= friend.email %></td>
         <td>
           <%= link_to "View Profile", user_path(friend), class:"btn btn-primary btn-xs" %>
-          <%= link_to 'Remove Friend', friendship_path(friend),
-  :method => :delete,
-  :data => { :confirm => "Are you sure?" },
-  :class => "btn btn-xs btn-danger" %>
+          <%= link_to 'Remove Friend', remove_friend_path(friend: friend), :data => { :confirm => "Are you sure?" },
+                                                                                :class => "btn btn-xs btn-danger" %>
         </td>
       </tr>
       <% end %>
@@ -37,4 +35,36 @@
   <div class="row col-lg-12">
     <p class="lead">You don't have any Friends yet. Please add some!</p>
   </div><!--row col-->
+<% end %>
+
+<% if @requested_friends.size > 0 %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th colspan="3" class="page-header">
+          <h2>Pending Friend Requests</h2>
+        </th>
+      </tr>
+      <tr>
+        <th>Avatar</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @requested_friends.each do |friend| %>
+      <tr>
+        <td><%= image_tag friend.avatar.url, size: "50x50" %></td>
+        <td><%= friend.full_name %></td>
+        <td><%= friend.email %></td>
+        <td>
+          <%= link_to "View Profile", user_path(friend), class:"btn btn-primary btn-xs" %>
+          <%= link_to "Accept request", accept_friend_path(friend: friend), class:"btn btn-success btn-xs" %>
+          <%= link_to "Decline request", decline_friend_path(friend: friend), class:"btn btn-danger btn-xs" %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% end %>

@@ -6,9 +6,12 @@ Rails.application.routes.draw do
   get 'welcome/contact'  
   get 'my_friends', to: 'users#my_friends'
   resources :users, only: [:show]
-  resources :friendships
+  #resources :friendships
   get 'search_friends', to: 'users#search'
   get 'add_friend', to: 'users#add_friend'
+  get 'accept_friend', to: 'users#accept_friend'
+  get 'decline_friend', to: 'users#decline_friend'
+  get 'remove_friend', to: 'users#remove_friend'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
