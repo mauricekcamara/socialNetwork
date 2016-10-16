@@ -3,18 +3,13 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :friendships
-  has_many :friends, through: :friendships
+  
   mount_uploader :avatar, AvatarUploader
   validate :avatar_size
 
   def full_name
     return "#{first_name} #{last_name}".strip if (first_name || last_name)
     "Anonymous"
-  end
-
-  def not_friends_with?(friend_id)
-    friendships.where(friend_id: friend_id).count < 1
   end
 
   def except_current_user(users)
