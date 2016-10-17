@@ -31,7 +31,7 @@
                   <span class="label label-primary">
                     You are friends.
                   </span>
-                <% elsif current_user.pending_friends.include?(user) %>
+                <% elsif current_user.pending_friends.include?(user) || current_user.requested_friends.include?(user) %>
                   <span class="label label-primary">
                     Awaiting friendship confirmation.
                   </span>
