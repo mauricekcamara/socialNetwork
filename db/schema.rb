@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161018160338) do
+ActiveRecord::Schema.define(version: 20161018165758) do
 
   create_table "friendships", force: :cascade do |t|
     t.integer  "friendable_id"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20161018160338) do
     t.string   "location"
     t.string   "currentprojects"
     t.text     "currentprojectsdesc"
+    t.string   "collaborators"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

@@ -13,16 +13,16 @@
     <p><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Washington, DC</p>
     <br>
 
-    <p><strong>Current Projects</strong></p>
+    <p><strong>Current Project</strong></p>
     <p><i><%= @user.currentprojects %> </i></p>
     <p><%= @user.currentprojectsdesc %></p>
     <br>
 
     <p><strong>Looking for...</strong></p>
-    <p>Expert in analogue to digital audio conversion</p>
+    <p><%= @user.collaborators %></p>
     <br>
   </div>
-  <div class="col-md-12">
+<!--   <div class="col-md-12">
     <br>
     <h3><strong>Experience</strong></h3>
     <p><i>Not a Crook</i> January 20, 1961 – Present</p>
@@ -32,7 +32,7 @@
     <h3><strong>Education</strong></h3>
     <p><i>Duke University</i> September 1934 - June 1937</p>
     <p><i>Harvard University</i> September 1930 - June 1933</p>
-  </div>
+  </div> -->
   <div class="col-md-12">
     <br>
     <p><%= link_to "Back", my_friends_path, class: "btn btn-primary" %></p>

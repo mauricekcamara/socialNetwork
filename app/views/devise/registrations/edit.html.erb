@@ -35,13 +35,17 @@
         </div>
       </div>
       <div class="form-group">
-        <%= f.label :currentprojects %>
+        <%= f.label 'Current Project' %>
         <%= f.text_field :currentprojects, class: "form-control" %>
       </div>
       <div class="form-group">
-        <%= f.label :currentprojectsdesc %>
-        <%= f.text_field :currentprojectsdesc, class: "form-control" %>
+        <%= f.label 'Project Description' %>
+        <%= f.text_area :currentprojectsdesc, class: "form-control" %>
       </div>
+      <div class="form-group">
+        <%= f.label :collaborators %>
+        <%= f.text_field :collaborators, class: "form-control" %>
+      </div>     
       <div class="form-group">
         <%= f.label :password %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it', :default => "leave blank if you don't want to change it") %>)</i>
         <%= f.password_field :password, :autocomplete => "off", class: "form-control" %>
