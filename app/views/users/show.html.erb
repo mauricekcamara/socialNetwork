@@ -9,14 +9,13 @@
   </div>
   <div class="col-md-8">
     <h2><%= @user.full_name %></h2>
-    <h4>Office Monitoring @ Democratic Headquarters </h4>
+    <h4><%= @user.title %> </h4>
     <p><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Washington, DC</p>
     <br>
 
     <p><strong>Current Projects</strong></p>
-    <p><i>Watergate Auditory Network Keeping Electronic Records</i></p>
-    <p>W.A.N.K.E.R. is a system that preserves audio records by converting them to a digital format. My goal is to create a system that prevents audio tapes from being wiped or missing valuable data by converting them to digital formats. Currently, my system is still in alpha stage. I am looking for other entreprenuers who can help me build a working W.A.N.K.E.R. prototype. 
-    </p>
+    <p><i><%= @user.currentprojects %> </i></p>
+    <p><%= @user.currentprojectsdesc %></p>
     <br>
 
     <p><strong>Looking for...</strong></p>
