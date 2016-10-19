@@ -34,6 +34,7 @@
           <%= f.text_field :location, class: "form-control" %>
         </div>
       </div>
+      <br>
       <div class="form-group">
         <%= f.label 'Current Project' %>
         <%= f.text_field :currentprojects, class: "form-control" %>
@@ -42,10 +43,24 @@
         <%= f.label 'Project Description' %>
         <%= f.text_area :currentprojectsdesc, class: "form-control" %>
       </div>
+      <br>
       <div class="form-group">
-        <%= f.label :collaborators %>
+        <%= f.label 'Looking for (who would you like to collaborate with?)' %>
         <%= f.text_field :collaborators, class: "form-control" %>
-      </div>     
+      </div>
+      <br>  
+
+      <div class="form-group">
+         <%= f.label 'Education' %>
+        <%= f.fields_for :educations do |education_form| %>
+          <br>
+          
+          <%= education_form.text_field :name, class: "form-control" %>
+          <%= education_form.text_area :desc, class: "form-control" %>
+        <% end %>
+      </div>
+
+      <br>
       <div class="form-group">
         <%= f.label :password %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it', :default => "leave blank if you don't want to change it") %>)</i>
         <%= f.password_field :password, :autocomplete => "off", class: "form-control" %>

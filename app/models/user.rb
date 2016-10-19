@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :educations
   mount_uploader :avatar, AvatarUploader
   validate :avatar_size
+  accepts_nested_attributes_for :educations
 
   def full_name
     return "#{first_name} #{last_name}".strip if (first_name || last_name)

@@ -59,4 +59,8 @@ class UsersController < ApplicationController
     @friend = User.find(params[:friend])
   end
 
+  def user_params
+    params.require(:user).permit(:name, educations_attributes: [:name, :id])
+  end
+
 end
