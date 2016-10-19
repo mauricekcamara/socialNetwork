@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :educations
   devise_for :users, :controllers => { :registrations => "user/registrations" }
   root 'welcome#index'
 

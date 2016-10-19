@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   
   has_friendship
-  
+  has_many :educations
   mount_uploader :avatar, AvatarUploader
   validate :avatar_size
 

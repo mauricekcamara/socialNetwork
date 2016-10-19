@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @education.name %>
+</p>
+
+<p>
+  <strong>Desc:</strong>
+  <%= @education.desc %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @education.user.full_name %>
+</p>
+<!-- May want to remove user name from education -->
+
+
+<%= link_to 'Edit', edit_education_path(@education) %> |
+<%= link_to 'Back', educations_path %>

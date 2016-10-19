@@ -21,6 +21,17 @@
     <p><strong>Looking for...</strong></p>
     <p><%= @user.collaborators %></p>
     <br>
+
+    <% if @user.educations.present? %>
+      <p><strong>Education</strong></p>
+      <% @user.educations.each do |education| %>
+        <p><%= link_to education.name, education %></p>
+        <p><%= education.desc %></p>
+        <br>
+      <% end %>
+    <% else %>
+      <p><strong> No Education Listed Yet </strong></p>
+    <% end %>
   </div>
 <!--   <div class="col-md-12">
     <br>
