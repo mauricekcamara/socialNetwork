@@ -5,7 +5,10 @@
     <%= image_tag @user.avatar.url, size: "200x200", class: 'img-responsive' %>
     <h3>Contact: </h3>
     <p><%= @user.email %></p>
-    <p>(123)456-7890</p>
+
+    <% if current_user.profile.present? %>
+      <p><%= @user.profile.phone %></p>
+    <% end %>
   </div>
   <div class="col-md-8">
     <h2><%= @user.full_name %></h2>
@@ -13,25 +16,15 @@
     <% if @user.profile.present? %>
         
       <h4><%= @user.profile.title %></h4>
-      <p><%= @user.profile.location %></p>
-      <p><%= link_to 'Edit', edit_profile_path(@user.profile) %></p>
-        </tr>
+      <p><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span><%= @user.profile.location %></p>
+
+
     <% end %>
 
 
   </div>
 </div>
-<!--   <div class="col-md-12">
-    <br>
-    <h3><strong>Experience</strong></h3>
-    <p><i>Not a Crook</i> January 20, 1961 – Present</p>
-    <p><i>President of United States</i> January 20, 1953 – January 20, 1961</p>
-    <p><i>State Senator California</i> December 4, 1950 – January 1, 1953</p>
-    <br>
-    <h3><strong>Education</strong></h3>
-    <p><i>Duke University</i> September 1934 - June 1937</p>
-    <p><i>Harvard University</i> September 1930 - June 1933</p>
-  </div> -->
+
   <div class="col-md-12">
     <br>
     <p><%= link_to 'Back', my_friends_path, class: "btn btn-primary" %></p>
