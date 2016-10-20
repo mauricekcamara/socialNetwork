@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161019143550) do
+ActiveRecord::Schema.define(version: 20161020153812) do
 
   create_table "conversations", force: :cascade do |t|
     t.integer  "sender_id"
@@ -42,6 +42,17 @@ ActiveRecord::Schema.define(version: 20161019143550) do
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id"
   add_index "messages", ["user_id"], name: "index_messages_on_user_id"
 
+  create_table "profiles", force: :cascade do |t|
+    t.string   "title"
+    t.string   "location"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "phone"
+  end
+
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -62,11 +73,6 @@ ActiveRecord::Schema.define(version: 20161019143550) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "avatar"
-    t.string   "title"
-    t.string   "location"
-    t.string   "currentprojects"
-    t.text     "currentprojectsdesc"
-    t.string   "collaborators"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
