@@ -2,32 +2,28 @@
  <%= link_to 'Show Previous' , '?m=all' %>
 <% end %>
 
-<div class=”ui segment”>
+<div class="media">
  <% @messages.each do |message| %>
   <% if message.body %>
-   <% user = User.find(message.user_id) %>
-   <div class=”item”>
-    <div class=”content”>
-     <div class=”header”><strong><%= user.first_name %></strong>     <%= message.message_time %></div>
-      <div class=”list”>
-       <div class=”item”>
-        <i class=”right triangle icon”></i>
-         <%= message.body %>
-      </div>
-    </div>
-   </div>
- </div>
+  <div class="media-left media-middle">
+    <% user = User.find(message.user_id) %>
+    <%= image_tag user.avatar.url, size: "50x50", class: "media-object" %>
+  </div><!--media-left middle-->
+  <div class="media-body">
+    <h4 class="media-heading"><strong><%= user.full_name %></strong></h4>
+    <p><%= message.body %></p>
+  </div><!--media body-->
  <% end %>
 <% end %>
-</div>
+</div><!--media-->
 
 <%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
-  <div class="field">
+  <div class="form-group">
     <%= f.text_area :body, class: "form-control" %>
+    <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
   </div>
-    <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
   <div>
-    <%= f.submit "Add Reply", class: "ui blue labeled submit icon button" %>
+    <%= f.submit "Send Message", class: "btn btn-primary" %>
   </div>
 
 <% end %>

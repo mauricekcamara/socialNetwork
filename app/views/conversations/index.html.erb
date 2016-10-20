@@ -1,15 +1,16 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th colspan="3" class="page-header">      
+      <th colspan="3" class="page-header">
         <h2>My Messages</h2>
       </th>
     </tr>
     <tr>
-      <th>
-        <h3>Message</h3>
-      </th>
+      <th>Avatar</th>
+      <th>Name</th>
+      <th>Actions</th>
     </tr>
+
   </thead>
   <tbody>
     <% @conversations.each do |conversation| %>
@@ -19,7 +20,11 @@
         <% else %>
           <% recipient = User.find(conversation.sender_id) %>
         <% end %>
-        <%= link_to recipient.full_name, conversation_messages_path(conversation) %>
+        <tr>
+          <td><%= image_tag recipient.avatar.url, size: "50x50" %></td>
+          <td><%= recipient.full_name %></td>
+          <td><%= link_to "View Message", conversation_messages_path(conversation) %></td>
+        </tr>
       <% end %>
     <% end%>
   </tbody>
