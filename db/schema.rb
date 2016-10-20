@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(version: 20161019143550) do
     t.datetime "updated_at"
   end
 
+  create_table "educations", force: :cascade do |t|
+    t.string   "name"
+    t.text     "desc"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "educations", ["user_id"], name: "index_educations_on_user_id"
+
   create_table "friendships", force: :cascade do |t|
     t.integer  "friendable_id"
     t.string   "friendable_type"

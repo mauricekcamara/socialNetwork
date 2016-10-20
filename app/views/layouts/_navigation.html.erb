@@ -17,10 +17,20 @@
         <li><%= link_to "Contact", welcome_contact_path %></li>
       </ul>
       <ul class="nav navbar-right col-md-4">
-        <li class="col-md-8 user-name text-right">
-          <%= link_to ('<span class="glyphicon glyphicon-user" aria-hidden="true"></span> ' + truncate(current_user.full_name.present? ? current_user.full_name : current_user.email)).html_safe,
-                                                            edit_user_registration_path, title: 'Edit Profile' %>
+        <li class="col-md-8 user-name text-right dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%= current_user.full_name %> <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Edit Profile</a></li>
+            <li><%= link_to (truncate(current_user.full_name.present? ? 'Account Settings' : current_user.email)).html_safe, edit_user_registration_path, title: 'Change Email and Password Settings' %></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
         </li>
+        
+
+                                                            
+
         <li class="col-md-4 logout"><%= link_to("Logout", destroy_user_session_path,
   class: "btn btn-danger", method: :delete) %></li>
       </ul>
