@@ -43,6 +43,7 @@ GEM
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
     byebug (9.0.6)
+    cancancan (1.15.0)
     carrierwave (1.0.0.beta)
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
@@ -325,6 +326,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  cancancan (~> 1.10)
   carrierwave (>= 1.0.0.beta, < 2.0)
   coffee-rails (~> 4.1.0)
   devise
@@ -347,4 +349,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.11.2
+   1.13.5
