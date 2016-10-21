@@ -12,15 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= f.label 'Your professional headline' %><br>
+    
+    <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%= f.label 'Your professional headline' %><br>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :location %><br>
+    <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> <%= f.label :location %><br>
     <%= f.text_field :location %>
   </div>
   <div class="field">
-    <%= f.label :phone %><br>
+    <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> <%= f.label :phone %><br>
     <%= f.text_field :phone %>
   </div>
   <div class="actions">
