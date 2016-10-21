@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
   def add_friend
     if current_user.friend_request(@friend)
-      FriendshipNotifier.sent_friend_requests(@friend).deliver_now
+      FriendshipNotifier.sent_friend_requests(@friend, current_user).deliver_now
       redirect_to my_friends_path, notice: "Friend request successfully sent."
     else
       redirect_to my_friends_path, flash[:error] = "There was an error sending the friend request"
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
   def accept_friend
     if current_user.accept_request(@friend)
-      FriendshipNotifier.accepted_friend_requests(@friend).deliver_now
+      FriendshipNotifier.accepted_friend_requests(@friend, current_user).deliver_now
       redirect_to my_friends_path, notice: "Friend request successfully accepted."
     else
       redirect_to my_friends_path, flash[:error] = "There was an error accepting the friend request."

@@ -4,6 +4,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <p>You have received a friend request. Please log in to accept or decline.</p>
+    <p>Hello <%= @friend.full_name %>! You have received a friend request from <%= @user.full_name %>.</p>
+    <p>Please log in to accept or decline.</p>
   </body>
 </html>
