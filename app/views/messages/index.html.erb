@@ -7,7 +7,7 @@
   <% if message.body %>
   <div class="media-left media-middle">
     <% user = User.find(message.user_id) %>
-    <%= image_tag user.avatar.url, size: "50x50", class: "media-object" %>
+    <%= link_to (image_tag user.avatar.url, size: "50x50", :class => "media-object"), user_path(user) %>
   </div><!--media-left middle-->
   <div class="media-body">
     <h4 class="media-heading"><strong><%= user.full_name %></strong></h4>

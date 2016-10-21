@@ -21,7 +21,7 @@
           <% recipient = User.find(conversation.sender_id) %>
         <% end %>
         <tr>
-          <td><%= image_tag recipient.avatar.url, size: "50x50" %></td>
+          <td><%= link_to (image_tag recipient.avatar.url, size: "50x50"), user_path(recipient) %></td>
           <td><%= recipient.full_name %></td>
           <td><%= link_to "View Message", conversation_messages_path(conversation) %></td>
         </tr>
