@@ -5,8 +5,10 @@ class Ability
     def initialize(user)
       user ||= User.new # guest user (not logged in)
       can :manage, User, id: user.id
-      can :manage, Profile
-      can :read, :all
+      can [:edit, :update], Profile, :user_id => user.id
+      can :read, [User, Profile]
+      cannot [:index, :show], Profile
+
     end
     
     
