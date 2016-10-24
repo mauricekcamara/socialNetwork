@@ -7,8 +7,8 @@ class Ability
       can :manage, User, id: user.id
       can [:edit, :update], Profile, :user_id => user.id
       can :read, [User, Profile]
-      # can :create, Profile
-      can :create, Profile if :user_id.Profile.count <1 
+      can :create, Profile
+      # can :create, Profile if User.Profile.count <1 
       # can :create, Users::Profile do |profile|
       #   if profile.user == user
       #     true
