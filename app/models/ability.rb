@@ -7,8 +7,16 @@ class Ability
       can :manage, User, id: user.id
       can [:edit, :update], Profile, :user_id => user.id
       can :read, [User, Profile]
+      # can :create, Profile
+      can :create, Profile if :user_id.Profile.count <1 
+      # can :create, Users::Profile do |profile|
+      #   if profile.user == user
+      #     true
+      #   else
+      #     false
+      #   end
+      # end
       cannot [:index, :show], Profile
-
     end
     
     
@@ -39,5 +47,6 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
+  
   end
 end
