@@ -1,22 +1,27 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(user)
+
     def initialize(user)
       user ||= User.new # guest user (not logged in)
-      can :manage, User, id: user.id
-      can [:edit, :update], Profile, :user_id => user.id
-      can :read, [User, Profile]
-      can :create, Profile
-      # can :create, Profile if User.Profile.count <1 
-      # can :create, Users::Profile do |profile|
-      #   if profile.user == user
-      #     true
-      #   else
-      #     false
-      #   end
-      # end
-      cannot [:index, :show], Profile
+      if user.admin?
+        can :manage, :all
+      else
+        
+        can :manage, User, id: user.id
+        can [:edit, :update], Profile, :user_id => user.id
+        can :read, [User, Profile]
+        can :create, Profile
+        # can :create, Profile if User.Profile.count <1 
+        # can :create, Users::Profile do |profile|
+        #   if profile.user == user
+        #     true
+        #   else
+        #     false
+        #   end
+        # end
+        cannot [:index, :show], Profile
+      end
     end
     
     
@@ -48,5 +53,5 @@ class Ability
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
   
-  end
+
 end
