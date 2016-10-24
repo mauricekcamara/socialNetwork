@@ -26,8 +26,9 @@ class ProfilesController < ApplicationController
   # POST /profiles.json
   def create
     if current_user.profile.present?
+      
+      redirect_to main_app.root_url
       flash[:error] = "you already have a profile"
-      redirect_to edit_profile_path(current_user)
     else
      @profile = Profile.new(profile_params)
      @profile.user = current_user
