@@ -16,12 +16,12 @@
     <% @conversations.each do |conversation| %>
       <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
         <% if conversation.sender_id == current_user.id %>
-          <% recipient = User.find(conversation.recipient_id) %>
+          <% recipient = get_the_user(conversation.recipient_id) %>
         <% else %>
-          <% recipient = User.find(conversation.sender_id) %>
+          <% recipient = get_the_user(conversation.sender_id) %>
         <% end %>
         <tr>
-          <td><%= link_to (image_tag recipient.avatar.url, size: "50x50"), user_path(recipient) %></td>
+          <%= (recipient.class == User ? link_to(image_tag recipient.avatar.url, size:"50x50"): (user_path(recipient)) or ("no link available")) %>
           <td><%= recipient.full_name %></td>
           <td><%= link_to "View Message", conversation_messages_path(conversation) %></td>
         </tr>
