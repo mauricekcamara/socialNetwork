@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   
   has_friendship
   has_one :profile
+  has_many :schools, :through => :profile
   mount_uploader :avatar, AvatarUploader
   validate :avatar_size
   has_many :conversations, :foreign_key => :sender_id

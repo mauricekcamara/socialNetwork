@@ -59,3 +59,4 @@ gem 'mini_magick'
 gem 'fog'
 gem 'has_friendship'
 gem 'cancancan', '~> 1.10'
+gem "cocoon"

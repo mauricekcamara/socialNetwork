@@ -48,6 +48,7 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    cocoon (1.2.9)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.1.x)
@@ -328,6 +329,7 @@ DEPENDENCIES
   byebug
   cancancan (~> 1.10)
   carrierwave (>= 1.0.0.beta, < 2.0)
+  cocoon
   coffee-rails (~> 4.1.0)
   devise
   devise-bootstrap-views
@@ -349,4 +351,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.13.5
+   1.13.6

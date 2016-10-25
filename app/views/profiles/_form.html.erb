@@ -24,6 +24,17 @@
     <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> <%= f.label :phone %><br>
     <%= f.text_field :phone %>
   </div>
+
+  <h3>Education</h3>
+<div id='schools'>
+    <%= f.fields_for :schools do |school| %>
+      <%= render 'school_fields', :f => school %>
+    <% end %>
+    <div class='links'>
+      <%= link_to_add_association 'add school', f, :schools %>
+    </div>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
