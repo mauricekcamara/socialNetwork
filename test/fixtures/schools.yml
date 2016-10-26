@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  year: 1
+  degree: MyString
+  done: false
+  profile_id: 
+
+two:
+  name: MyString
+  year: 1
+  degree: MyString
+  done: false
+  profile_id: 

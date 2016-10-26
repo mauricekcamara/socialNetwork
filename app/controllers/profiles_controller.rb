@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
-
+  before_filter :authenticate_user!
+  load_and_authorize_resource
   # GET /profiles
   # GET /profiles.json
   def index
@@ -24,16 +25,26 @@ class ProfilesController < ApplicationController
   # POST /profiles
   # POST /profiles.json
   def create
-    @profile = Profile.new(profile_params)
-    @profile.user = current_user
+    if current_user.profile.present?
+      flash[:error] = "you already have a profile"
+      redirect_to edit_profile_path(current_user)
+    else
+     @profile = Profile.new(profile_params)
+     @profile.user = current_user
+    
+    # @profile = Users::Profile.new(profile_params)
+    # @profile.user = current_user
+  
+    # authorize! :create, @profile
 
-    respond_to do |format|
-      if @profile.save
-        format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
-        format.json { render :show, status: :created, location: @profile }
-      else
-        format.html { render :new }
-        format.json { render json: @profile.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @profile.save
+          format.html { redirect_to main_app.root_url, notice: 'Profile was successfully created.' }
+          format.json { render :show, status: :created, location: @profile }
+        else
+          format.html { render :new }
+          format.json { render json: @profile.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -43,7 +54,7 @@ class ProfilesController < ApplicationController
   def update
     respond_to do |format|
       if @profile.update(profile_params)
-        format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
+        format.html { redirect_to main_app.root_url, notice: 'Profile was successfully updated.' }
         format.json { render :show, status: :ok, location: @profile }
       else
         format.html { render :edit }
@@ -70,6 +81,6 @@ class ProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.require(:profile).permit(:title, :location, :user_id, :phone)
+      params.require(:profile).permit(:title, :location, :user_id, :phone, schools_attributes: [:id, :name, :date, :degree, :done, :_destroy])
     end
 end

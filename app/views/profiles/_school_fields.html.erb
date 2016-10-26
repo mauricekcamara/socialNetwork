@@ -1,0 +1,19 @@
+  <div class='nested-fields'>
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :year %>
+      <%= f.text_field :year %>
+    </div>
+    <div class="field">
+      <%= f.label :degree %>
+      <%= f.text_field :degree %>
+    </div>
+    <div class="field">
+      <%= f.check_box :done %>
+      <%= f.label :done %>
+    </div>
+    <%= link_to_remove_association "remove school", f %>
+  </div>
