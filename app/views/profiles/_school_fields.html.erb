@@ -1,19 +1,31 @@
   <div class='nested-fields'>
-    <div class="field">
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+    <div class="form-group">
+      <%= f.label 'School', :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= f.text_field :name, :class => 'form-control' %>
+      </div>
     </div>
-    <div class="field">
-      <%= f.label :year %>
-      <%= f.number_field :year %>
+    <div class="form-group">
+      <%= f.label :year, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= f.number_field :year, :class => 'form-control' %>
+      </div>
     </div>
-    <div class="field">
-      <%= f.label :degree %>
-      <%= f.text_field :degree %>
+    <div class="form-group">
+      <%= f.label :degree, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= f.text_field :degree, :class => 'form-control' %>
+      </div>
     </div>
-    <div class="field">
-      <%= f.check_box :done %>
-      <%= f.label :done %>
+    <div class="form-group">
+      <div class="col-lg-12">
+        <%= f.check_box :done %>
+        <%= f.label :done %>
+      </div>
     </div>
-    <%= link_to_remove_association "remove school", f %>
+    <div class="form-group">
+      <button type="button" class="btn btn-danger"><%= link_to_remove_association "remove school", f %></button>
+    </div>
+
   </div>
+  <br>

@@ -45,13 +45,13 @@
   </div>
 
   <h3>Education</h3>
- <div id='schools'>
+   <div id='schools row'>
      <%= f.fields_for :schools do |school| %>
        <%= render 'school_fields', :f => school %>
      <% end %>
-     <div class='links'>
-       <%= link_to_add_association 'add school', f, :schools %>
-     </div>
+<br>
+       <button type="button" class="btn btn-info"><%= link_to_add_association 'add school', f, :schools %></button>
+
    </div>
 
 
