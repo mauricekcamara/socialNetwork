@@ -20,7 +20,7 @@
         
       <h3>Education</h3>
       <% @user.schools.each do |school| %>
-       <p><strong><%= school.name %></strong> <i><%= school.degree %></i></p>
+       <p><strong><%= school.name %></strong> <i><%= school.degree %></i><%= school.year %></p>
 
        <br> 
       <% end %>

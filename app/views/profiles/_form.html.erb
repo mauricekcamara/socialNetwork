@@ -44,6 +44,17 @@
     <%=f.error_span(:phone) %>
   </div>
 
+  <h3>Education</h3>
+ <div id='schools'>
+     <%= f.fields_for :schools do |school| %>
+       <%= render 'school_fields', :f => school %>
+     <% end %>
+     <div class='links'>
+       <%= link_to_add_association 'add school', f, :schools %>
+     </div>
+   </div>
+
+
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
       <%= f.submit nil, :class => 'btn btn-primary' %>
