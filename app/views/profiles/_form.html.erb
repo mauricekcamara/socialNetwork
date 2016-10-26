@@ -1,41 +1,55 @@
-<%= form_for(@profile) do |f| %>
-  <% if @profile.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+<%= form_for @profile, :html => { :class => "form-horizontal profile" } do |f| %>
 
-      <ul>
-      <% @profile.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <% if @profile.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @profile.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
-  <div class="field">
-    
-    <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%= f.label 'Your professional headline' %><br>
-    <%= f.text_field :title %>
+  <div class="form-group">
+    <%= f.label :title, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :title, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:title) %>
   </div>
-  <div class="field">
-    <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> <%= f.label :location %><br>
-    <%= f.text_field :location %>
+  <div class="form-group">
+    <%= f.label :location, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :location, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:location) %>
   </div>
-  <div class="field">
-    <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
+  <div class="form-group">
+    <%= f.label :user_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :user_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:user_id) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :phone, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :phone, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:phone) %>
   </div>
 
-  <h3>Education</h3>
-<div id='schools'>
-    <%= f.fields_for :schools do |school| %>
-      <%= render 'school_fields', :f => school %>
-    <% end %>
-    <div class='links'>
-      <%= link_to_add_association 'add school', f, :schools %>
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                profiles_path, :class => 'btn btn-default' %>
     </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>
