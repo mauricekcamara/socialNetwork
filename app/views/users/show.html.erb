@@ -24,6 +24,14 @@
 
        <br> 
       <% end %>
+      
+      <h3>Education</h3>
+      <% @user.skills.each do |skill| %>
+       <p><strong><%= skill.name %></strong></p>
+       <p><i><%= skill.description %></p>
+
+       <br> 
+      <% end %>
 
 
     <% end %>
