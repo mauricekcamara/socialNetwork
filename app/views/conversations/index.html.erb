@@ -20,11 +20,13 @@
         <% else %>
           <% recipient = get_the_user(conversation.sender_id) %>
         <% end %>
-        <tr>
-          <%= (recipient.class == User ? link_to(image_tag recipient.avatar.url, size:"50x50"): (user_path(recipient)) or ("no link available")) %>
-          <td><%= recipient.full_name %></td>
-          <td><%= link_to "View Message", conversation_messages_path(conversation) %></td>
-        </tr>
+        <% if recipient.class == User %>
+          <tr>
+            <td><%= link_to (image_tag recipient.avatar.url, :size => "50x50"), user_path(recipient) %></td>
+            <td><%= recipient.full_name %></td>
+            <td><%= link_to "View Message", conversation_messages_path(conversation) %></td>
+          </tr>
+        <% end %>
       <% end %>
     <% end%>
   </tbody>

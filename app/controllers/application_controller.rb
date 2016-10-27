@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
   def get_the_user(id)
     user = User.find_by(id: id)
     return user if user
-    user = DummyUser.new('deleted user')
+    #user = DummyUser.new('deleted user')
   end
 end
