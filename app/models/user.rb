@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
   validate :avatar_size
   has_many :conversations, dependent: :destroy, :foreign_key => :sender_id
-  
+
 
   def full_name
     return "#{first_name} #{last_name}".strip if (first_name || last_name)

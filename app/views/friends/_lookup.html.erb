@@ -16,7 +16,7 @@
   <% end %>
   <%= render 'common/spinner' %>
   <% if @users %>
-    <% if @users.size > 0 %>
+    <% if @users.size > 0 and @users = current_user.except_current_user(@users) %>
       <div id="friend-lookup-results" class="well results-block col-md-10">
         <table class="search-results-table col-md-12">
           <tbody>
