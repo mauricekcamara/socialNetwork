@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_friend, only: [:add_friend, :accept_friend, :decline_friend, :remove_friend]
-  
+
   before_filter :authenticate_user!
   load_and_authorize_resource
-  
+
   def my_friends
     @friendships = current_user.friends
     @requested_friends = current_user.requested_friends
