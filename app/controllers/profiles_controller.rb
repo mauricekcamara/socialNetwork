@@ -31,10 +31,10 @@ class ProfilesController < ApplicationController
     else
      @profile = Profile.new(profile_params)
      @profile.user = current_user
-    
+
     # @profile = Users::Profile.new(profile_params)
     # @profile.user = current_user
-  
+
     # authorize! :create, @profile
 
       respond_to do |format|
@@ -81,6 +81,6 @@ class ProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.require(:profile).permit(:title, :location, :user_id, :phone, schools_attributes: [:id, :name, :year, :degree, :done, :_destroy], skills_attributes: [:id, :name, :description, :done, :_destroy])
+      params.require(:profile).permit(:title, :location, :user_id, :avatar, :avatar_cache, :phone, schools_attributes: [:id, :name, :year, :degree, :done, :_destroy], skills_attributes: [:id, :name, :description, :done, :_destroy])
     end
 end

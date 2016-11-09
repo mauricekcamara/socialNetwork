@@ -1,11 +1,7 @@
 <div class="row">
- 
+
   <div class="col-md-4">
-    <% if @user.avatar.present? %>
-      <%= image_tag @user.avatar.url, size: "200x200", class: 'img-responsive' %>
-    <% else %>
-      <%= image_tag("default-avatar.png", size: "200x200", class: 'img-responsive') %>
-    <% end %>
+    <%= image_tag @user.profile.avatar.url, size: "200x200", class: 'img-responsive' %>
     <h3>Contact: </h3>
     <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> <%= @user.email %></p>
 
@@ -20,20 +16,20 @@
 
       <h4><%= @user.profile.title %></h4>
       <p><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span><%= @user.profile.location %></p>
-        
+
       <h3>Education</h3>
       <% @user.schools.each do |school| %>
        <p><strong><%= school.name %></strong> <i><%= school.degree %></i> <%= school.year.to_i %></p>
 
-       <br> 
+       <br>
       <% end %>
-      
+
       <h3>Education</h3>
       <% @user.skills.each do |skill| %>
        <p><strong><%= skill.name %></strong></p>
         <p><i><%= skill.description %></i></p>
 
-       <br> 
+       <br>
       <% end %>
 
 

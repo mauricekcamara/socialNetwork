@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161027002335) do
+ActiveRecord::Schema.define(version: 20161107203038) do
 
   create_table "conversations", force: :cascade do |t|
     t.integer  "sender_id"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20161027002335) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "phone"
+    t.string   "avatar"
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
@@ -95,7 +96,6 @@ ActiveRecord::Schema.define(version: 20161027002335) do
     t.datetime "updated_at",                             null: false
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "avatar"
     t.boolean  "admin",                  default: false, null: false
   end
 
