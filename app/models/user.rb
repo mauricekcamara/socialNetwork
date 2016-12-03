@@ -48,11 +48,7 @@ class User < ActiveRecord::Base
 
   private
 
-  def avatar_size
-    if avatar.size > 5.megabytes
-      errors.add(:avatar, "Should be less than 5MB.")
-    end
-  end
+  
 
 
 
