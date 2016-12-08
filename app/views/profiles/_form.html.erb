@@ -44,6 +44,11 @@
     <%=f.error_span(:phone) %>
   </div>
 
+  <h3>Objective</h3>
+   <div id='schools row'>
+     <%= f.cktext_area :description %>
+   </div>
+
   <h3>Education</h3>
    <div id='schools row'>
      <%= f.fields_for :schools do |school| %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161027002335) do
+ActiveRecord::Schema.define(version: 20161208183251) do
 
   create_table "conversations", force: :cascade do |t|
     t.integer  "sender_id"
@@ -42,13 +42,25 @@ ActiveRecord::Schema.define(version: 20161027002335) do
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id"
   add_index "messages", ["user_id"], name: "index_messages_on_user_id"
 
+  create_table "objectives", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.boolean  "done"
+    t.integer  "profile_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "objectives", ["profile_id"], name: "index_objectives_on_profile_id"
+
   create_table "profiles", force: :cascade do |t|
     t.string   "title"
     t.string   "location"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.string   "phone"
+    t.text     "description"
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
