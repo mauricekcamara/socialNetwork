@@ -1,5 +1,5 @@
 <div class="navbar navbar-default navbar-static-top">
-  <div class="container">
+  <div class="container" id="navbar-pc">
     <%= link_to "Social Network", root_path, class: "navbar-brand" %>
     <% if current_user %>
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
@@ -45,4 +45,51 @@
     </div>
     <% end %>
   </div>
+  
+  <div class="container" id="navbar-mobile">
+    <div class="row">
+      <div class="col-xs-3 dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <ul>
+            <li><%= link_to "My Profile", user_path(current_user)  %></li>
+            <li><%= link_to "My Friends", my_friends_path %></li>
+            <li><%= link_to "My Messages", conversations_path %></li>
+            <li><%= link_to "About", welcome_about_path %></li>
+            <li><%= link_to "Contact", welcome_contact_path %></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%= current_user.full_name %></a></li>
+            <% if current_user.profile.present? %>
+            <li><%= link_to 'Edit Profile', edit_profile_path(current_user.profile) %></li>
+
+          <% else %>
+            <li><%= link_to 'Build My Profile', new_profile_path %></li>
+          <% end %>
+
+
+          <li><%= link_to (truncate(current_user.full_name.present? ? 'Account Settings' : current_user.email)).html_safe, edit_user_registration_path, title: 'Change Email and Password Settings' %></li>
+            
+    
+                                                                
+    
+            <li class="col-md-4 logout"><%= link_to("Logout", destroy_user_session_path,
+      class: "btn btn-danger", method: :delete) %></li>
+          </ul>
+        </div>
+      </div>
+      
+      <%= link_to my_friends_path do %>
+        <div class="col-xs-3"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></div>
+      <% end %>
+<%= link_to conversations_path do %>
+<div class="col-xs-3"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></div>
+<% end %>
+      <%= link_to user_path(current_user) do %>
+        <div class="col-xs-3"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></div>
+      <% end %>
+    </div>
+  </div>
+
 </div>
